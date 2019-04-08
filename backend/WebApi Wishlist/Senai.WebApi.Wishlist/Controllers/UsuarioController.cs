@@ -9,6 +9,7 @@ using Senai.WebApi.Wishlist.Domains;
 using Senai.WebApi.Wishlist.ViewModels;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
+using System.Data.SqlClient;
 
 namespace Senai.WebApi.Wishlist.Controllers
 {
@@ -24,8 +25,8 @@ namespace Senai.WebApi.Wishlist.Controllers
             Repositorio = new UsuarioRepository();
         }
 
-        [Authorize]
         [HttpGet]
+        [Authorize]
         [Route("desejos")]
         public IActionResult Listar()
         {
@@ -76,7 +77,8 @@ namespace Senai.WebApi.Wishlist.Controllers
                 return Ok(new {
                     Token = new JwtSecurityTokenHandler().WriteToken(token)
                 });
-            } catch (Exception exc) {
+            }
+            catch (Exception exc) {
                 return NotFound(exc.Message);
             }
         }

@@ -17,8 +17,6 @@ namespace Senai.WebApi.Wishlist.Domains
         public string Descricao { get; set; }
 
         public DateTime Datacricao { get; set; }
-
-        [Required(ErrorMessage ="Não existe usuario para ser linkado a esse desejo",AllowEmptyStrings =false)]
         public int Usuarioid { get; set; }
 
         public Usuario Usuario { get; set; }

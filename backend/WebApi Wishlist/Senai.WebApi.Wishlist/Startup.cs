@@ -9,14 +9,19 @@ namespace Senai.WebApi.Wishlist {
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services) {
-            services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
+            services.AddMvc().AddJsonOptions(
+                opt => {
+                    opt.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+                    opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                }
+             ).SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
 
             services.AddAuthentication();
 
             services.AddAuthentication(
                 i => {
                     i.DefaultAuthenticateScheme = "JwtBearer";
-                    i.DefaultChallengeScheme = "JwTBearer";
+                    i.DefaultChallengeScheme = "JwtBearer";
                 }
             ).AddJwtBearer("JwtBearer", v => {
                 v.TokenValidationParameters = new TokenValidationParameters {

@@ -1,6 +1,7 @@
 ﻿using System;
-using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Senai.WebApi.Wishlist.Domains;
 using Senai.WebApi.Wishlist.Interfaces;
@@ -21,26 +22,28 @@ namespace Senai.WebApi.Wishlist.Controllers
 
         [HttpGet]
         [Route("listar")]
+        [Authorize]
         public IActionResult Listar()
         {
             try {
                 return Ok(Repositorios.Listar());
             }catch(Exception exc) {
-                return BadRequest(exc.Message);
+                return BadRequest(exc);
             }
         }
 
-        [HttpGet]
-        [Route("cadastrar")]
+        [HttpPost]
+        [Route("cadastro")]
+        [Authorize]
         public IActionResult Cadastrar(Desejo desejo) {
             try {
                 desejo.Usuarioid = Convert.ToInt32(
                     HttpContext.User.Claims.First(x => x.Type == JwtRegisteredClaimNames.Jti).Value
                 );
                 Repositorios.Cadastrar(desejo);
-                return Ok();
+                return Ok($"Desejo {desejo.Nome} cadastrado com sucesso!");
             } catch (Exception exc) {
-                return BadRequest(exc.Message);
+                return BadRequest(exc);
             }
         }
 

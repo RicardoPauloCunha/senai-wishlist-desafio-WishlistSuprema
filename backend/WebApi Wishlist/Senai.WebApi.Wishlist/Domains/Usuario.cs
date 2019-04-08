@@ -18,8 +18,8 @@ namespace Senai.WebApi.Wishlist.Domains
         public string Nome { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "O Email do usuario é obrigatorio")]
-        [DataType(DataType.EmailAddress, ErrorMessage = "O Valor inserido não é uma data valida")]
         [StringLength(maximumLength: 250, ErrorMessage = "Quantidade de caracteres invalidas")]
+        [EmailAddress(ErrorMessage = "O Valor inserido não é email valido")]
         public string Email { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "A Senha do usuario é obrigatorio")]

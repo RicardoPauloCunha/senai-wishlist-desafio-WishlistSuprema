@@ -9,15 +9,16 @@ namespace Senai.WebApi.Wishlist.Repositorios {
 
         public void Cadastrar(Usuario usuario) {
             using (WishlistContext ctx = new WishlistContext()) {
-                ctx.Add(usuario);
+                ctx.Usuario.Add(usuario);
                 ctx.SaveChanges();
             }
          }
 
         public Usuario ListarDesejos(int ID) {
             using (WishlistContext ctx = new WishlistContext()) {
-                if(ctx.Usuario.Find(ID) != null) {
-                    return ctx.Usuario.Include(i => i.Desejo).First(i => i.Usuarioid == ID);
+                Usuario usuario = ctx.Usuario.Include(i => i.Desejo).First(i => i.Usuarioid == ID);
+                if (usuario != null) {
+                    return usuario;
                 }
             }
             throw new NullReferenceException("Erro ao encontrar usuario");
@@ -25,7 +26,7 @@ namespace Senai.WebApi.Wishlist.Repositorios {
 
         public Usuario Login(string email, string senha) {
             using (WishlistContext ctx = new WishlistContext()) {
-                Usuario usuario = ctx.Usuario.First(i => i.Email == email && i.Senha == senha);
+                Usuario usuario = ctx.Usuario.ToList().Find(i => i.Email == email && i.Senha == senha);
                 if(usuario != null) {
                     return usuario;
                 }
