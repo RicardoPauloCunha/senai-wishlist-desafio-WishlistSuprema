@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 class Login extends Component {
     constructor(props) {
@@ -19,19 +20,16 @@ PegarSenha(event) {
 }
 
 EfetuarLogin(event) {
-    event.preventDefaut();
+    event.preventDefault();
 
-    fetch('http://192.168.56.1:5000/api/usuario/login', {
-        method: "POST",
-        body: JSON.stringify({email: this.state.email, senha: this.state.senha}),
-        headers: {
-            "Content-Type" : "application/json"
-        }
+    axios.post('http://localhost:5000/api/usuario/login', {
+        email : this.state.email,
+        senha : this.state.senha,
     })
     .then(data => {
         if(data.status === 200){
             localStorage.setItem("usuariotoken-wishlist", data.data.tokens)
-            this.props.history.push("/desejos");
+            this.props.history.push("/");
         } else {
             alert("Email ou Senha Invalida");
         }

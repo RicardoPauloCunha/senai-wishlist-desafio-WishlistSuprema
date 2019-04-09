@@ -1,9 +1,9 @@
 import React from "react-dom";
 
-function NaoEncotrada() {
+function NaoEncontrada() {
     return(
         <p>Não Encotrada</p>
     );
 }
 
-export default NaoEncotrada;
+export default NaoEncontrada;

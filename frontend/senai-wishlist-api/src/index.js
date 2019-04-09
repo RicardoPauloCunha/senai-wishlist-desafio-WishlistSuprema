@@ -22,7 +22,7 @@ const Routing = (
     <Router>
         <div>
             <Switch>
-                <Route exact path="/" component={App} />
+                <Permissao exact path="/" component={App} />
                 <Route path="/login" component={Login} />
                 <Route component={NaoEncontrada} />
             </Switch>
