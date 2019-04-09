@@ -9,10 +9,14 @@ namespace Senai.WebApi.Wishlist.Repositorios {
 
         public void Cadastrar(Usuario usuario) {
             using (WishlistContext ctx = new WishlistContext()) {
-                ctx.Usuario.Add(usuario);
-                ctx.SaveChanges();
+                bool emailExiste = ctx.Usuario.Any(i => i.Email == usuario.Email);
+                if(!emailExiste) {
+                    ctx.Usuario.Add(usuario);
+                    ctx.SaveChanges();
+                }
             }
-         }
+            throw new NullReferenceException("Email ja está em uso");
+        }
 
         public Usuario ListarDesejos(int ID) {
             using (WishlistContext ctx = new WishlistContext()) {

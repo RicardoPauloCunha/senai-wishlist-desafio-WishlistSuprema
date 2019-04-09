@@ -28,7 +28,7 @@ namespace Senai.WebApi.Wishlist.Controllers
             try {
                 return Ok(Repositorios.Listar());
             }catch(Exception exc) {
-                return BadRequest(exc);
+                return BadRequest(exc.Message);
             }
         }
 
@@ -43,7 +43,7 @@ namespace Senai.WebApi.Wishlist.Controllers
                 Repositorios.Cadastrar(desejo);
                 return Ok($"Desejo {desejo.Nome} cadastrado com sucesso!");
             } catch (Exception exc) {
-                return BadRequest(exc);
+                return BadRequest(exc.Message);
             }
         }
 
