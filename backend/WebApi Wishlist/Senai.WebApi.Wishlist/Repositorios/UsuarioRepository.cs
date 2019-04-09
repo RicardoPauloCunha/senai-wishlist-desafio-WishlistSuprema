@@ -14,8 +14,11 @@ namespace Senai.WebApi.Wishlist.Repositorios {
                     ctx.Usuario.Add(usuario);
                     ctx.SaveChanges();
                 }
+                else
+                {
+                    throw new NullReferenceException("Email ja está em uso");
+                }
             }
-            throw new NullReferenceException("Email ja está em uso");
         }
 
         public Usuario ListarDesejos(int ID) {

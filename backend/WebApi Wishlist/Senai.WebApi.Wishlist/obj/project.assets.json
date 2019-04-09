@@ -12645,23 +12645,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\47326175810\\.nuget\\packages\\": {},
+    "C:\\Users\\50473694808\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\47326175810\\Desktop\\senai-wishlist-desafio-WishlistSuprema\\backend\\WebApi Wishlist\\Senai.WebApi.Wishlist\\Senai.WebApi.Wishlist.csproj",
+      "projectUniqueName": "C:\\Users\\50473694808\\Desktop\\backend\\senai-wishlist-desafio-WishlistSuprema\\backend\\WebApi Wishlist\\Senai.WebApi.Wishlist\\Senai.WebApi.Wishlist.csproj",
       "projectName": "Senai.WebApi.Wishlist",
-      "projectPath": "C:\\Users\\47326175810\\Desktop\\senai-wishlist-desafio-WishlistSuprema\\backend\\WebApi Wishlist\\Senai.WebApi.Wishlist\\Senai.WebApi.Wishlist.csproj",
-      "packagesPath": "C:\\Users\\47326175810\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\47326175810\\Desktop\\senai-wishlist-desafio-WishlistSuprema\\backend\\WebApi Wishlist\\Senai.WebApi.Wishlist\\obj\\",
+      "projectPath": "C:\\Users\\50473694808\\Desktop\\backend\\senai-wishlist-desafio-WishlistSuprema\\backend\\WebApi Wishlist\\Senai.WebApi.Wishlist\\Senai.WebApi.Wishlist.csproj",
+      "packagesPath": "C:\\Users\\50473694808\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\50473694808\\Desktop\\backend\\senai-wishlist-desafio-WishlistSuprema\\backend\\WebApi Wishlist\\Senai.WebApi.Wishlist\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\47326175810\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\50473694808\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
