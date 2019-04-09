@@ -1,0 +1,193 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.flex {
+    display: flex;
+}
+
+.menu {
+    width: 100%;
+    height: 140px;
+    background-color: gray;
+}
+
+.menu-nav {
+    width: 100%;
+    padding: 15px 15px 25px 15px;
+}
+
+.menu-nav-logo {
+    width: 100%;
+    justify-content: center
+}
+
+.menu-nav-logo-circulo {
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    background-color: white;
+}
+
+.menu-nav-login {
+    width: 5%;
+    text-align: center;
+}
+
+.menu-titulo {
+    width: 100%;
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+}
+
+.linha-vertical {
+    width: 60%;
+    height: 2px;
+    margin: 5px auto 10px auto;
+    background-color: white;
+}
+
+footer {
+    background-color: gray;
+    color: white;
+    width: 100%;
+    height: 26px;
+    text-align: center;
+    padding-top: 6px;
+    margin-top: 10px; 
+}
+
+.button-generic {
+    background-color: gray;
+    border: solid white 1px;
+    border-radius: 10px;
+    padding: 7px 20px;
+    color: white;
+}
+
+.button {
+    background-color: white;
+    border: solid gray 1px;
+    border-radius: 10px;
+    padding: 7px 20px;
+    color: gray;
+}
+
+header {
+    margin-bottom: 40px;
+}
+
+/* main */
+
+.main-margin-header {
+    margin-top: 20px;
+}
+
+.btn-main-cadastrar {
+    margin: 10px auto 35px auto;
+    text-align: center;
+}
+
+.main {
+    width: 80%;
+    margin: 0 auto 0 auto;
+}
+
+.main-header {
+    text-align: center;
+    width: 100%;
+    height: auto;
+    margin-top: 50px;
+}
+
+h2 {
+    margin: 30px auto 10px auto;
+}
+
+.linha-vertical {
+    width: 60%;
+    height: 2px;
+    margin: 5px auto 10px auto;
+    background-color: rgb(199, 199, 199);
+}
+
+/* desejos */
+
+.desejos-container {
+    width: 100%;
+    height: auto;
+    margin: 15px auto 20px auto;
+}
+
+.margin-rigth {
+    margin-right: 15px;
+}
+
+.desejos-header {
+    justify-content: flex-end;
+    width: 100%;
+    padding: 0 5%;
+    margin-top: 30px;
+}
+
+.desejos-main {
+    width: 40%;
+    border: solid gray 1px;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0 auto 20px auto;
+}
+
+.desejos {
+    flex-wrap: wrap;
+    margin-top: 20px; 
+}
+
+.desejo-header-titulo {
+    font-size: 20px;
+}
+
+.desejo-header-data {
+    font-size: 15px;
+    color: gray;
+    margin: auto 0px auto 20px
+}
+
+.main-desejo {
+    margin-top: 5px; 
+}
+/* cadastrar desejos */
+
+.form {
+    flex-direction: column;
+    width: 60%;
+    margin: 0 auto 0 auto;
+}
+
+.input-form {
+    text-decoration: none;
+    margin-bottom: 15px;
+    border: none;
+    border-bottom: solid gray 1px;
+    padding: 4px 2px;
+}
+
+.textarea-form {
+    border-radius: 5px;
+    border: solid gray 1px;
+    background-color: rgb(240, 240, 240);
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.flex-btn-form {
+    justify-content: flex-end;
+}
+
+.btn-form {
+    width: 15%;
+}
