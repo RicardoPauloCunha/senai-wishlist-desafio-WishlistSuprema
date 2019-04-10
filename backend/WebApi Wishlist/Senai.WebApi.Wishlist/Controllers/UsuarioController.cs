@@ -40,6 +40,27 @@ namespace Senai.WebApi.Wishlist.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("listar{ordem}")]
+        [Authorize]
+        public IActionResult Listar(string ordem) {
+            try {
+                int ID = Convert.ToInt32(
+                    HttpContext.User.Claims.First(x => x.Type == JwtRegisteredClaimNames.Jti).Value
+                );
+
+                Usuario usuario = Repositorio.ListarDesejos(ID);
+                switch (ordem) {
+                    case "asc":
+                        return Ok(usuario.Desejo.OrderBy(i => i.Datacriacao));
+                    default:
+                        return Ok(usuario.Desejo.OrderByDescending(i => i.Datacriacao));
+                }
+            } catch (Exception exc) {
+                return BadRequest(exc.Message);
+            }
+        }
+
         [HttpPost]
         [Route("cadastro")]
         public IActionResult Cadastrar(Usuario usuario) {

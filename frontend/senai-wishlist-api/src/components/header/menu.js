@@ -21,7 +21,7 @@ class Menu extends Component {
                         </div>
                     </div>
                     <div class="menu-titulo">
-                        <h1>{this.props.titulo}}</h1>
+                        <h1>{this.props.titulo}</h1>
                         <div class="linha-vertical"></div>
                     </div>
                 </div>

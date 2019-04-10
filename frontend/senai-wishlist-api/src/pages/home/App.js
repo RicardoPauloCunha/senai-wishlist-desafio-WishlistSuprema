@@ -4,10 +4,9 @@ import './App.css';
 // import ButtonGeneric from "../../components/inputs/button-generic";
 // import Button from "../../components/inputs/button";
 // import Rodape from "../../components/rodape/rodape";
-
-import {usuarioToken} from "../../services/auth";
-import "../../assents/css/style.css";
-import Desejo from '../../components/desejos/Desejo';
+import {withRouter} from 'react-router-dom';
+import Desejo from '../../components/desejos/Desejo.js';
+import Footer from "../../components/rodape/rodape.js";
 
 
 class App extends Component {
@@ -29,13 +28,18 @@ class App extends Component {
     this.BuscarListaDesejos();
   }
 
+  
+  Deslogar(event){
+    
+  }
+  
   	/* Buscar valores pela API*/
   BuscarListaDesejos() {
     fetch('http://localhost:5000/api/usuario/desejos',{
       method : 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization : 'Bearer ' + usuarioToken
+        Authorization : 'Bearer ' + localStorage.getItem("usuariotoken-wishlist")
       }
     })
       .then(resposta => resposta.json())
@@ -65,11 +69,14 @@ class App extends Component {
         }),
         headers: {
           "Content-Type": "application/json",
-          Authorization : "Bearer " + usuarioToken
+          Authorization : "Bearer " + localStorage.getItem("usuariotoken-wishlist")
         }
       })
       .then(resposta => resposta)
-      .then(this.BuscarListaDesejos())
+      .then(()=> {
+        this.BuscarListaDesejos();
+        alert("Desejo cadastrado com sucesso");
+      })
       .catch(erro => console.log(erro))
   }
 
@@ -86,28 +93,30 @@ class App extends Component {
                 <div className="menu-nav-logo-circulo"></div>
               </div>
               <div className="menu-nav-login">
-                <button className="button-generic">Sair</button>
+                <button className="button-generic btn-click" onClick={ (props) => {
+                    localStorage.removeItem("usuariotoken-wishlist");
+                    this.props.history.push("./login");
+                  }
+                }>Sair</button>
               </div>
             </div>
             <div className="menu-titulo">
               <h1>Meus Desejos</h1>
-              <div className="linha-vertical"></div>
+              <div className="linha-vertical1"></div>
             </div>
           </div>
         </header>
 
         <div className="main">
           <div className="btn-main-cadastrar">
-            <button className="button" disabled>Cadastrar Desejos</button>
+            <button className="button btn-click" disabled>Cadastrar Desejos</button>
           </div>
           <div>
             <form onSubmit={this.CadastrarDesejo} className="flex form">
               <input type="text" placeholder="Titulo" className="input-form" values = {this.state.nome} onChange={this.PegarNome} />
               <textarea name="" id="" cols="30" rows="6" placeholder="Meu desejo é..."
-                className="textarea-form" values = {this.state.descricao} onChange={this.PegarDescricao}></textarea>
-              <div className="flex flex-btn-form">
-                <button className="button btn-form">Cadastrar</button>
-              </div>
+              className="textarea-form" values = {this.state.descricao} onChange={this.PegarDescricao}></textarea>
+              <button className="button btn-form btn-click">Cadastrar</button>
             </form>
           </div>
         </div>
@@ -116,8 +125,8 @@ class App extends Component {
             <h2>Lista de Desejos</h2>
             <div className="linha-vertical"></div>
             <div className="desejos-header flex">
-              <button className="button margin-rigth" disabled>Recentes</button>
-              <button className="button" disabled>Antigos</button>
+              <button className="button margin-rigth btn-click" disabled>Recentes</button>
+              <button className="button btn-click" disabled>Antigos</button>
             </div>
           </div>
 
@@ -127,19 +136,17 @@ class App extends Component {
             {
                 this.state.listaDesejos.map(d => {
                   return (
-                    <Desejo id={d.id} nome={d.nome} descricao={d.descricao} datacriacao={d.datacriacao.replace("T"," ").split(".")[0]} />
+                    <Desejo key={d.desejoid} nome={d.nome} descricao={d.descricao} datacriacao={d.datacriacao.replace("T"," ").split(".")[0]} />
                   );
                 })
             }
             </div>
           </div>
         </main>
-        <footer>
-          <p>Escola Senai de Informática - 2019</p>
-        </footer>
+        <Footer/>
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

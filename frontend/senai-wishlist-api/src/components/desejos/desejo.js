@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Desejo extends Component {
     render() {
         return (
-            <div className="desejos-main" key={this.props.id}>
+            <div className="desejos-main">
                 <div className="desejo">
                     <div className="desejo-header flex">
                         <p className="desejo-header-titulo">{this.props.nome}</p>

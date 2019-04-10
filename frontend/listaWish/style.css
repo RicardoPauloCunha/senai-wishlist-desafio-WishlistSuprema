@@ -16,7 +16,7 @@
 .menu {
     width: 100%;
     height: 140px;
-    background-color: gray;
+    background-image: linear-gradient(-30deg, red, purple);
 }
 
 .menu-nav {
@@ -67,18 +67,20 @@
 
 .button-generic {
     background-color: transparent;
-    border: solid white 1px;
-    border-radius: 10px;
+    border: solid white 1.5px;
+    border-radius: 30px;
     padding: 7px 20px;
     color: white;
+    box-shadow: 1px 1px 5px #888888;
 }
 
 .button {
     background-color: white;
-    border: solid gray 1px;
-    border-radius: 10px;
+    border: solid purple 1px;
+    border-radius: 20px;
     padding: 7px 20px;
     color: gray;
+    box-shadow: 4px 4px 5px #888888;
 }
 
 header {
@@ -116,7 +118,7 @@ h2 {
     width: 25%;
     height: 2px;
     margin: 5px auto 10px auto;
-    background-color: rgb(199, 199, 199);
+    background-image: linear-gradient(-30deg, red, purple);
 }
 
 /* desejos */
@@ -140,10 +142,14 @@ h2 {
 
 .desejos-main {
     width: 40%;
-    border: solid gray 1px;
     border-radius: 5px;
     padding: 10px;
     margin: 0 auto 20px auto;
+    box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
+    border: solid 1.5px transparent;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(-30deg, red, purple);
+    background-origin: border-box;
+    box-shadow: 2px 1000px 1px #fff inset;
 }
 
 .desejos {
@@ -199,11 +205,12 @@ h2 {
 
 /* LOGIN */
 .bk-img{
-    background-color: gray;
+    background-image: linear-gradient(-30deg, red, purple);
     background-repeat: no-repeat;
     width: 50%;
     margin: 100px auto 0 auto;
     height: auto;
+    box-shadow: 0px 0px 15px #888888;
 }
 
 .bk-img{
@@ -274,4 +281,10 @@ h2 {
 
 .footer-fim {
     height: 10px;
+    
+}
+
+.btn-click:active {
+    box-shadow: 1px 1px 5px #888888;
+    outline: 0;
 }
