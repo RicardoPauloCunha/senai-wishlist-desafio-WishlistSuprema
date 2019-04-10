@@ -66,7 +66,7 @@
 }
 
 .button-generic {
-    background-color: gray;
+    background-color: transparent;
     border: solid white 1px;
     border-radius: 10px;
     padding: 7px 20px;
@@ -199,21 +199,38 @@ h2 {
 
 /* LOGIN */
 .bk-img{
-    background-image: url("img8-min.png");
+    background-color: gray;
     background-repeat: no-repeat;
     width: 50%;
     margin: 100px auto 0 auto;
     height: auto;
 }
 
+.bk-img{
+	background-size: cover;
+	position: relative;
+}
+.escuro::after {
+	position: absolute;
+    content: '';
+    width: 100%;
+    height: 398px;
+    left: 0;
+    background: rgba(0, 0, 0, 0.58);
+}
+
 .main-container {
-    background-color: gray;
+    z-index: 2;
 }
 
 .menu-nav-login {
     width: 100%;
     padding: 15px 15px 0 15px;
     justify-content: center;
+}
+
+.menu-titulo h1 {
+    font-size: 25px;
 }
 
 .form-login {
@@ -224,7 +241,7 @@ h2 {
 
 .input-form-login {
     border: solid white 1px;
-    background-color: gray;
+    background: transparent;
     border-radius: 3px;
     margin-bottom: 17px;
     height: 30px;
