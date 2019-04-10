@@ -2,7 +2,7 @@ import React from "react-dom";
 
 function NaoEncontrada() {
     return(
-        <p>Não Encotrada</p>
+        <h1>Essa pagina não existe</h1>
     );
 }
 

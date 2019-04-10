@@ -2,16 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router, Switch, Redirect} from "react-router-dom";
 import "./assents/css/style.css";
-import App from './pages/home/App';
-import * as serviceWorker from './serviceWorker';
 import NaoEncontrada from "./pages/naoEncontrada/naoEncontrada";
+
+import App from './pages/home/App';
 import Login from "./pages/login/login";
+
+import * as serviceWorker from './serviceWorker';
 import {usuarioToken} from "./services/auth";
 
 const Permissao = ({component : Component}, {...rest}) => (
     <Route
       {...rest}
-      render = {props => usuarioToken()?
+      render = {props => usuarioToken != null?
         <Component {...props} /> :
         <Redirect to={{pathname:"/login"}} />
       }

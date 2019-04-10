@@ -1,1 +1,1 @@
-export const usuarioToken = () => localStorage.getItem("usuariotoken-wishlist") != null;
+export const usuarioToken = localStorage.getItem("usuariotoken-wishlist");

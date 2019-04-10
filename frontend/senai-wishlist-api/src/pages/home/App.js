@@ -5,52 +5,67 @@ import './App.css';
 // import Button from "../../components/inputs/button";
 // import Rodape from "../../components/rodape/rodape";
 
+import {usuarioToken} from "../../services/auth";
 import "../../assents/css/style.css";
-import Desejo from '../../components/desejos/desejo';
+import Desejo from '../../components/desejos/Desejo';
 
 
 class App extends Component {
   constructor() {
     super();
     this.state =
-      {
+		{
         listaDesejos: [],
         nome: "",
-        descricao: "",
+        descricao: ""
       }
-
-    this.BuscarListaDesejos = this.BuscarListaDesejos.bind();
-    this.CadastrarDesejo = this.CadastrarDesejo.bind();
-  }
-
-  BuscarListaDesejos() {
-    fetch('http://localhost:5000/api/desejo/listar')
-      .then(resposta => resposta.json())
-      .then(data => this.setState({ listaDesejos : data }))
-      .catch(erro => console.error(erro))
+	  //isTokenExpired
+	  this.PegarNome = this.PegarNome.bind(this);
+	  this.PegarDescricao = this.PegarDescricao.bind(this);
+	  this.CadastrarDesejo = this.CadastrarDesejo.bind(this);
   }
 
   componentDidMount() {
     this.BuscarListaDesejos();
   }
 
+  	/* Buscar valores pela API*/
+  BuscarListaDesejos() {
+    fetch('http://localhost:5000/api/usuario/desejos',{
+      method : 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization : 'Bearer ' + usuarioToken
+      }
+    })
+      .then(resposta => resposta.json())
+      .then(data =>this.setState({ listaDesejos : data.desejo }))
+      .catch(erro => console.error(erro))
+  }
+
+  /* Buscar valores em campos */
   PegarNome(event) {
-    this.setState({ nome: event.target.value });
+		this.setState({ nome: event.target.value });
   }
 
   PegarDescricao(event) {
     this.setState({ descricao: event.target.value });
   }
 
+	/*Enviar valores para a API*/
   CadastrarDesejo(event) {
     event.preventDefault();
 
-    fetch('http://localhost/api/desejo/cadastro',
+    fetch('http://localhost:5000/api/desejo/cadastro',
       {
         method: 'POST',
-        body: JSON.stringify({ nome: this.state.nome, descricao: this.state.descricao }),
+        body: JSON.stringify({
+           nome: this.state.nome, 
+           descricao: this.state.descricao
+        }),
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          Authorization : "Bearer " + usuarioToken
         }
       })
       .then(resposta => resposta)
@@ -83,13 +98,13 @@ class App extends Component {
 
         <div className="main">
           <div className="btn-main-cadastrar">
-            <button className="button">Cadastrar Desejos</button>
+            <button className="button" disabled>Cadastrar Desejos</button>
           </div>
           <div>
             <form onSubmit={this.CadastrarDesejo} className="flex form">
-              <input type="text" placeholder="Titulo" className="input-form" value={this.state.nome} onChange={this.PegarNome.bind(this)} />
+              <input type="text" placeholder="Titulo" className="input-form" values = {this.state.nome} onChange={this.PegarNome} />
               <textarea name="" id="" cols="30" rows="6" placeholder="Meu desejo é..."
-                className="textarea-form" value={this.state.descricao} onChange={this.PegarDescricao.bind(this)}></textarea>
+                className="textarea-form" values = {this.state.descricao} onChange={this.PegarDescricao}></textarea>
               <div className="flex flex-btn-form">
                 <button className="button btn-form">Cadastrar</button>
               </div>
@@ -101,8 +116,8 @@ class App extends Component {
             <h2>Lista de Desejos</h2>
             <div className="linha-vertical"></div>
             <div className="desejos-header flex">
-              <button className="button margin-rigth">Recentes</button>
-              <button className="button">Antigos</button>
+              <button className="button margin-rigth" disabled>Recentes</button>
+              <button className="button" disabled>Antigos</button>
             </div>
           </div>
 
@@ -110,11 +125,11 @@ class App extends Component {
           
             <div className="desejos flex">
             {
-              this.state.listaDesejos.map(function(desejo) {
-                return (
-                  <Desejo nome={this.desejo.nome} descricao={this.desejo.descricao} datacriacao={this.desejo.datacriacao} />
-                );
-              })
+                this.state.listaDesejos.map(d => {
+                  return (
+                    <Desejo id={d.id} nome={d.nome} descricao={d.descricao} datacriacao={d.datacriacao.replace("T"," ").split(".")[0]} />
+                  );
+                })
             }
             </div>
           </div>

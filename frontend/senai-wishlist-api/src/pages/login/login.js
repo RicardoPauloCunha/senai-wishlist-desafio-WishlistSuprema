@@ -28,22 +28,20 @@ EfetuarLogin(event) {
     })
     .then(data => {
         if(data.status === 200){
-            localStorage.setItem("usuariotoken-wishlist", data.data.tokens)
+            localStorage.setItem("usuariotoken-wishlist", data.data.token)
             this.props.history.push("/");
-        } else {
-            alert("Email ou Senha Invalida");
         }
     })
-    .catch(erro => console.log(erro));
+    .catch(erro => alert("Email ou senha invalidos"));
 }
 
     render() {
         return (
             <div>
                 <form onSubmit={this.EfetuarLogin.bind(this)}>
-                    <input type="text" value={this.state.email} onChange={this.PegarEmail.bind(this)} />
-                    <input type="text" value={this.state.senha} onChange={this.PegarSenha.bind(this)} />
-                    <button type="submit">entrar</button>
+                    <input type="email" value={this.state.email} onChange={this.PegarEmail.bind(this)} required/>
+                    <input type="password" value={this.state.senha} onChange={this.PegarSenha.bind(this)} required />
+                    <button type="submit">Entrar</button>
                 </form>
             </div>
         );
