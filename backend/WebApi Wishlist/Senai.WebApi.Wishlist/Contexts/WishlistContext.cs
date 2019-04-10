@@ -20,8 +20,8 @@ namespace Senai.WebApi.Wishlist.Domains
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source = .\\SQLEXPRESS ; Initial Catalog = Senai_Wishlist_Desafio; user id = sa; pwd = 132;");
-                //optionsBuilder.UseSqlServer("Data Source=.\\NOVOSERVIDOR ; Initial Catalog = Senai_Wishlist_Desafio ; Integrated Security=SSPI;");
+                //optionsBuilder.UseSqlServer("Data Source = .\\SQLEXPRESS ; Initial Catalog = Senai_Wishlist_Desafio; user id = sa; pwd = 132;");
+                optionsBuilder.UseSqlServer("Data Source=.\\NOVOSERVIDOR ; Initial Catalog = Senai_Wishlist_Desafio ; Integrated Security=SSPI;");
             }
         }
 
@@ -33,7 +33,7 @@ namespace Senai.WebApi.Wishlist.Domains
 
                 entity.Property(e => e.Desejoid).HasColumnName("DESEJOID");
 
-                entity.Property(e => e.Datacricao)
+                entity.Property(e => e.Datacriacao)
                     .HasColumnName("DATACRICAO")
                     .HasColumnType("datetime");
 

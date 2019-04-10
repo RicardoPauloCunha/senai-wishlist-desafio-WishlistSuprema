@@ -8,7 +8,7 @@ namespace Senai.WebApi.Wishlist.Repositorios {
     public class DesejoRepository : IDesejoRepository {
 
         public void Cadastrar(Desejo desejo) {
-            desejo.Datacricao = DateTime.Now;
+            desejo.Datacriacao = DateTime.Now;
             using (WishlistContext ctx = new WishlistContext()) {
                 ctx.Add(desejo);
                 ctx.SaveChanges();

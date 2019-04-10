@@ -79,7 +79,7 @@ namespace Senai.WebApi.Wishlist.Controllers
                 });
             }
             catch (Exception exc) {
-                return NotFound(exc.Message);
+                return BadRequest(exc.Message);
             }
         }
     }

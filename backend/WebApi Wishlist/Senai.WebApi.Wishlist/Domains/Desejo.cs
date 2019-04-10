@@ -16,7 +16,7 @@ namespace Senai.WebApi.Wishlist.Domains
         [StringLength(maximumLength: 500, ErrorMessage = "Limite de caracteres atingido")]
         public string Descricao { get; set; }
 
-        public DateTime Datacricao { get; set; }
+        public DateTime Datacriacao { get; set; }
         public int Usuarioid { get; set; }
 
         public Usuario Usuario { get; set; }
