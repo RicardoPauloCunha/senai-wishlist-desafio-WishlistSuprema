@@ -4,8 +4,8 @@ import './App.css';
 // import ButtonGeneric from "../../components/inputs/button-generic";
 // import Button from "../../components/inputs/button";
 // import Rodape from "../../components/rodape/rodape";
-import {withRouter} from 'react-router-dom';
-import Desejo from '../../components/desejos/Desejo.js';
+import { withRouter } from 'react-router-dom';
+import Desejo from '../../components/desejos/desejo.js';
 import Footer from "../../components/rodape/rodape.js";
 
 
@@ -13,50 +13,50 @@ class App extends Component {
   constructor() {
     super();
     this.state =
-		{
-        listaDesejos: [],
-        nome: "",
-        descricao: ""
-      }
-	  //isTokenExpired
-	  this.PegarNome = this.PegarNome.bind(this);
-	  this.PegarDescricao = this.PegarDescricao.bind(this);
-	  this.CadastrarDesejo = this.CadastrarDesejo.bind(this);
+    {
+      listaDesejos: [],
+      nome: "",
+      descricao: ""
+    }
+    //isTokenExpired
+    this.PegarNome = this.PegarNome.bind(this);
+    this.PegarDescricao = this.PegarDescricao.bind(this);
+    this.CadastrarDesejo = this.CadastrarDesejo.bind(this);
   }
 
   componentDidMount() {
     this.BuscarListaDesejos();
   }
 
-  
-  Deslogar(event){
-    
+
+  Deslogar(event) {
+
   }
-  
-  	/* Buscar valores pela API*/
+
+  /* Buscar valores pela API*/
   BuscarListaDesejos() {
-    fetch('http://localhost:5000/api/usuario/desejos',{
-      method : 'GET',
+    fetch('http://localhost:5000/api/usuario/desejos', {
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization : 'Bearer ' + localStorage.getItem("usuariotoken-wishlist")
+        Authorization: 'Bearer ' + localStorage.getItem("usuariotoken-wishlist")
       }
     })
       .then(resposta => resposta.json())
-      .then(data =>this.setState({ listaDesejos : data.desejo }))
+      .then(data => this.setState({ listaDesejos: data.desejo }))
       .catch(erro => console.error(erro))
   }
 
   /* Buscar valores em campos */
   PegarNome(event) {
-		this.setState({ nome: event.target.value });
+    this.setState({ nome: event.target.value });
   }
 
   PegarDescricao(event) {
     this.setState({ descricao: event.target.value });
   }
 
-	/*Enviar valores para a API*/
+  /*Enviar valores para a API*/
   CadastrarDesejo(event) {
     event.preventDefault();
 
@@ -64,16 +64,16 @@ class App extends Component {
       {
         method: 'POST',
         body: JSON.stringify({
-           nome: this.state.nome, 
-           descricao: this.state.descricao
+          nome: this.state.nome,
+          descricao: this.state.descricao
         }),
         headers: {
           "Content-Type": "application/json",
-          Authorization : "Bearer " + localStorage.getItem("usuariotoken-wishlist")
+          Authorization: "Bearer " + localStorage.getItem("usuariotoken-wishlist")
         }
       })
       .then(resposta => resposta)
-      .then(()=> {
+      .then(() => {
         this.BuscarListaDesejos();
         alert("Desejo cadastrado com sucesso");
       })
@@ -93,10 +93,10 @@ class App extends Component {
                 <div className="menu-nav-logo-circulo"></div>
               </div>
               <div className="menu-nav-login">
-                <button className="button-generic btn-click" onClick={ (props) => {
-                    localStorage.removeItem("usuariotoken-wishlist");
-                    this.props.history.push("./login");
-                  }
+                <button className="button-generic btn-click" onClick={(props) => {
+                  localStorage.removeItem("usuariotoken-wishlist");
+                  this.props.history.push("./login");
+                }
                 }>Sair</button>
               </div>
             </div>
@@ -107,15 +107,14 @@ class App extends Component {
           </div>
         </header>
 
-        <div className="main">
-          <div className="btn-main-cadastrar">
-            <button className="button btn-click" disabled>Cadastrar Desejos</button>
-          </div>
+        <div className="main App-text-align">
+          <h2>Adicionar Desejo</h2>
+          <div className="linha-vertical"></div>
           <div>
             <form onSubmit={this.CadastrarDesejo} className="flex form">
-              <input type="text" placeholder="Titulo" className="input-form" values = {this.state.nome} onChange={this.PegarNome} />
-              <textarea name="" id="" cols="30" rows="6" placeholder="Meu desejo é..."
-              className="textarea-form" values = {this.state.descricao} onChange={this.PegarDescricao}></textarea>
+              <input type="text" placeholder="Titulo" className="input-form" values={this.state.nome} onChange={this.PegarNome} required />
+              <textarea name="" id="" cols="30" rows="6" placeholder="Meu desejo é..." required
+                className="textarea-form" values={this.state.descricao} onChange={this.PegarDescricao}></textarea>
               <button className="button btn-form btn-click">Cadastrar</button>
             </form>
           </div>
@@ -124,26 +123,22 @@ class App extends Component {
           <div className="main-header">
             <h2>Lista de Desejos</h2>
             <div className="linha-vertical"></div>
-            <div className="desejos-header flex">
-              <button className="button margin-rigth btn-click" disabled>Recentes</button>
-              <button className="button btn-click" disabled>Antigos</button>
-            </div>
           </div>
 
           <div className="desejos-container">
-          
+
             <div className="desejos flex">
-            {
+              {
                 this.state.listaDesejos.map(d => {
                   return (
-                    <Desejo key={d.desejoid} nome={d.nome} descricao={d.descricao} datacriacao={d.datacriacao.replace("T"," ").split(".")[0]} />
+                    <Desejo key={d.desejoid} nome={d.nome} descricao={d.descricao} datacriacao={d.datacricao.replace("T", " ").split(".")[0]} />
                   );
                 })
-            }
+              }
             </div>
           </div>
         </main>
-        <Footer/>
+        <Footer />
       </div>
     );
   }

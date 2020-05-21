@@ -16,7 +16,8 @@ namespace Senai.WebApi.Wishlist.Controllers
     {
         private readonly IDesejoRepository Repositorios;
 
-        public DesejoController() {
+        public DesejoController()
+        {
             Repositorios = new DesejoRepository();
         }
 
@@ -25,9 +26,12 @@ namespace Senai.WebApi.Wishlist.Controllers
         [Authorize]
         public IActionResult Listar()
         {
-            try {
+            try
+            {
                 return Ok(Repositorios.Listar());
-            }catch(Exception exc) {
+            }
+            catch (Exception exc)
+            {
                 return BadRequest(exc.Message);
             }
         }
@@ -35,17 +39,19 @@ namespace Senai.WebApi.Wishlist.Controllers
         [HttpPost]
         [Route("cadastro")]
         [Authorize]
-        public IActionResult Cadastrar(Desejo desejo) {
-            try {
-                desejo.Usuarioid = Convert.ToInt32(
-                    HttpContext.User.Claims.First(x => x.Type == JwtRegisteredClaimNames.Jti).Value
-                );
+        public IActionResult Cadastrar(DesejoViewModel desejo) {
+            try
+            {
+                desejo.Usuarioid = Convert.ToInt32(HttpContext.User.Claims.First(x => x.Type == JwtRegisteredClaimNames.Jti).Value);
+
                 Repositorios.Cadastrar(desejo);
+
                 return Ok($"Desejo {desejo.Nome} cadastrado com sucesso!");
-            } catch (Exception exc) {
+            }
+            catch (Exception exc)
+            {
                 return BadRequest(exc.Message);
             }
         }
-
     }
 }

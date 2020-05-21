@@ -10,7 +10,8 @@ namespace Senai.WebApi.Wishlist.Interfaces {
         /// Cadastra um desejo no banco de dados
         /// </summary>
         /// <param name="desejo">Desejo a ser cadastrado</param>
-        void Cadastrar(Desejo desejo);
+        void Cadastrar(DesejoViewModel desejo);
+
         /// <summary>
         /// Lista todos os desejos do banco de dados
         /// </summary>

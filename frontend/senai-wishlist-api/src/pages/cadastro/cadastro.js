@@ -58,7 +58,7 @@ class Cadastro extends Component {
                     <form onSubmit={this.Cadastrar.bind(this)} className="flex form-login">
                         <input className="input-form-login" type="text" placeholder="Nome" required value={this.state.nome} onChange={this.pegarNome.bind(this)}/>
                         <input className="input-form-login" type="email" placeholder="Email" required value={this.state.email} onChange={this.PegarEmail.bind(this)}/>
-                        <input className="input-form-login" type="password" placeholder="Senha" minlength="8" value={this.state.senha} onChange={this.PegarSenha.bind(this)}/>
+                        <input className="input-form-login" type="password" placeholder="Senha" minLength="8" value={this.state.senha} onChange={this.PegarSenha.bind(this)}/>
                         <button type="submit" className="button-generic btn-form-login btn-click">Cadastrar</button>
                     </form>
                 </div>

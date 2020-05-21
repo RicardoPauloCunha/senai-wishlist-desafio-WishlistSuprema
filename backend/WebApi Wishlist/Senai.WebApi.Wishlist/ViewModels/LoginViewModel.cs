@@ -1,6 +1,13 @@
-﻿namespace Senai.WebApi.Wishlist.ViewModels {
-    public class LoginViewModel {
-        public string Email;
-        public string Senha;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Senai.WebApi.Wishlist.ViewModels
+{
+    public class LoginViewModel
+    {
+        [Required]
+        public string Email { get; set; }
+
+        [Required]
+        public string Senha { get; set; }
     }
 }

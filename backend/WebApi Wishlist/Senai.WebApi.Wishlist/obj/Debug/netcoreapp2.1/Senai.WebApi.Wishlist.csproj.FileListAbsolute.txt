@@ -54,3 +54,17 @@ C:\Users\50473694808\Desktop\backend\senai-wishlist-desafio-WishlistSuprema\back
 C:\Users\50473694808\Desktop\backend\senai-wishlist-desafio-WishlistSuprema\backend\WebApi Wishlist\Senai.WebApi.Wishlist\obj\Debug\netcoreapp2.1\Senai.WebApi.Wishlist.RazorTargetAssemblyInfo.cache
 C:\Users\50473694808\Desktop\backend\senai-wishlist-desafio-WishlistSuprema\backend\WebApi Wishlist\Senai.WebApi.Wishlist\obj\Debug\netcoreapp2.1\Senai.WebApi.Wishlist.dll
 C:\Users\50473694808\Desktop\backend\senai-wishlist-desafio-WishlistSuprema\backend\WebApi Wishlist\Senai.WebApi.Wishlist\obj\Debug\netcoreapp2.1\Senai.WebApi.Wishlist.pdb
+C:\Users\ricar\OneDrive\Área de Trabalho\Senai\senai-wishlist-desafio-WishlistSuprema\backend\WebApi Wishlist\Senai.WebApi.Wishlist\bin\Debug\netcoreapp2.1\Senai.WebApi.Wishlist.deps.json
+C:\Users\ricar\OneDrive\Área de Trabalho\Senai\senai-wishlist-desafio-WishlistSuprema\backend\WebApi Wishlist\Senai.WebApi.Wishlist\bin\Debug\netcoreapp2.1\Senai.WebApi.Wishlist.runtimeconfig.json
+C:\Users\ricar\OneDrive\Área de Trabalho\Senai\senai-wishlist-desafio-WishlistSuprema\backend\WebApi Wishlist\Senai.WebApi.Wishlist\bin\Debug\netcoreapp2.1\Senai.WebApi.Wishlist.runtimeconfig.dev.json
+C:\Users\ricar\OneDrive\Área de Trabalho\Senai\senai-wishlist-desafio-WishlistSuprema\backend\WebApi Wishlist\Senai.WebApi.Wishlist\bin\Debug\netcoreapp2.1\Senai.WebApi.Wishlist.dll
+C:\Users\ricar\OneDrive\Área de Trabalho\Senai\senai-wishlist-desafio-WishlistSuprema\backend\WebApi Wishlist\Senai.WebApi.Wishlist\bin\Debug\netcoreapp2.1\Senai.WebApi.Wishlist.pdb
+C:\Users\ricar\OneDrive\Área de Trabalho\Senai\senai-wishlist-desafio-WishlistSuprema\backend\WebApi Wishlist\Senai.WebApi.Wishlist\obj\Debug\netcoreapp2.1\Senai.WebApi.Wishlist.csprojAssemblyReference.cache
+C:\Users\ricar\OneDrive\Área de Trabalho\Senai\senai-wishlist-desafio-WishlistSuprema\backend\WebApi Wishlist\Senai.WebApi.Wishlist\obj\Debug\netcoreapp2.1\Senai.WebApi.Wishlist.csproj.CoreCompileInputs.cache
+C:\Users\ricar\OneDrive\Área de Trabalho\Senai\senai-wishlist-desafio-WishlistSuprema\backend\WebApi Wishlist\Senai.WebApi.Wishlist\obj\Debug\netcoreapp2.1\Senai.WebApi.Wishlist.RazorAssemblyInfo.cache
+C:\Users\ricar\OneDrive\Área de Trabalho\Senai\senai-wishlist-desafio-WishlistSuprema\backend\WebApi Wishlist\Senai.WebApi.Wishlist\obj\Debug\netcoreapp2.1\Senai.WebApi.Wishlist.RazorAssemblyInfo.cs
+C:\Users\ricar\OneDrive\Área de Trabalho\Senai\senai-wishlist-desafio-WishlistSuprema\backend\WebApi Wishlist\Senai.WebApi.Wishlist\obj\Debug\netcoreapp2.1\Senai.WebApi.Wishlist.AssemblyInfoInputs.cache
+C:\Users\ricar\OneDrive\Área de Trabalho\Senai\senai-wishlist-desafio-WishlistSuprema\backend\WebApi Wishlist\Senai.WebApi.Wishlist\obj\Debug\netcoreapp2.1\Senai.WebApi.Wishlist.AssemblyInfo.cs
+C:\Users\ricar\OneDrive\Área de Trabalho\Senai\senai-wishlist-desafio-WishlistSuprema\backend\WebApi Wishlist\Senai.WebApi.Wishlist\obj\Debug\netcoreapp2.1\Senai.WebApi.Wishlist.RazorTargetAssemblyInfo.cache
+C:\Users\ricar\OneDrive\Área de Trabalho\Senai\senai-wishlist-desafio-WishlistSuprema\backend\WebApi Wishlist\Senai.WebApi.Wishlist\obj\Debug\netcoreapp2.1\Senai.WebApi.Wishlist.dll
+C:\Users\ricar\OneDrive\Área de Trabalho\Senai\senai-wishlist-desafio-WishlistSuprema\backend\WebApi Wishlist\Senai.WebApi.Wishlist\obj\Debug\netcoreapp2.1\Senai.WebApi.Wishlist.pdb

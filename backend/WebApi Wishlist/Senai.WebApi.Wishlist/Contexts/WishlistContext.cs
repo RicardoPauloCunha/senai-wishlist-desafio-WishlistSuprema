@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Senai.WebApi.Wishlist.Domains
 {
@@ -20,8 +22,8 @@ namespace Senai.WebApi.Wishlist.Domains
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source = .\\SQLEXPRESS ; Initial Catalog = Senai_Wishlist_Desafio; user id = sa; pwd = 132;");
-                //optionsBuilder.UseSqlServer("Data Source=.\\NOVOSERVIDOR ; Initial Catalog = Senai_Wishlist_Desafio ; Integrated Security=SSPI;");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer("Data source =.\\SQLSERVERJIROS;Initial Catalog=Wishlist; User id=sa;pwd=ji_15?27101001_roS");
             }
         }
 
@@ -33,7 +35,7 @@ namespace Senai.WebApi.Wishlist.Domains
 
                 entity.Property(e => e.Desejoid).HasColumnName("DESEJOID");
 
-                entity.Property(e => e.Datacriacao)
+                entity.Property(e => e.Datacricao)
                     .HasColumnName("DATACRICAO")
                     .HasColumnType("datetime");
 
@@ -54,7 +56,7 @@ namespace Senai.WebApi.Wishlist.Domains
                     .WithMany(p => p.Desejo)
                     .HasForeignKey(d => d.Usuarioid)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__DESEJO__USUARIOI__4CA06362");
+                    .HasConstraintName("FK__DESEJO__USUARIOI__3A81B327");
             });
 
             modelBuilder.Entity<Usuario>(entity =>
@@ -62,7 +64,7 @@ namespace Senai.WebApi.Wishlist.Domains
                 entity.ToTable("USUARIO");
 
                 entity.HasIndex(e => e.Email)
-                    .HasName("UQ__USUARIO__161CF724C75CD11E")
+                    .HasName("UQ__USUARIO__161CF7245A28215A")
                     .IsUnique();
 
                 entity.Property(e => e.Usuarioid).HasColumnName("USUARIOID");

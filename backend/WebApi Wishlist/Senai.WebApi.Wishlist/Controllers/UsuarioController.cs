@@ -18,10 +18,10 @@ namespace Senai.WebApi.Wishlist.Controllers
     [Route("api/[controller]")]
     public class UsuarioController : ControllerBase
     {
-
         private readonly IUsuarioRepository Repositorio;
 
-        public UsuarioController() {
+        public UsuarioController()
+        {
             Repositorio = new UsuarioRepository();
         }
 
@@ -30,64 +30,76 @@ namespace Senai.WebApi.Wishlist.Controllers
         [Route("desejos")]
         public IActionResult Listar()
         {
-            try {
-                int ID = Convert.ToInt32(
-                    HttpContext.User.Claims.First(x => x.Type == JwtRegisteredClaimNames.Jti).Value
-                );
+            try
+            {
+                int ID = Convert.ToInt32(HttpContext.User.Claims.First(x => x.Type == JwtRegisteredClaimNames.Jti).Value);
+
                 return Ok(Repositorio.ListarDesejos(ID));
-            } catch (Exception exc) {
+            }
+            catch (Exception exc)
+            {
                 return BadRequest(exc.Message);
             }
         }
 
         [HttpGet]
-        [Route("listar{ordem}")]
+        [Route("listar/novos/{ehAtual}")]
         [Authorize]
-        public IActionResult Listar(string ordem) {
+        public IActionResult ListarNovos(bool ehAtual)
+        {
             try {
-                int ID = Convert.ToInt32(
-                    HttpContext.User.Claims.First(x => x.Type == JwtRegisteredClaimNames.Jti).Value
-                );
+                int ID = Convert.ToInt32(HttpContext.User.Claims.First(x => x.Type == JwtRegisteredClaimNames.Jti).Value);
 
                 Usuario usuario = Repositorio.ListarDesejos(ID);
-                switch (ordem) {
-                    case "asc":
-                        return Ok(usuario.Desejo.OrderBy(i => i.Datacriacao));
+
+                switch (ehAtual)
+                {
+                    case false:
+                        return Ok(usuario.Desejo.OrderBy(i => i.Datacricao));
+
                     default:
-                        return Ok(usuario.Desejo.OrderByDescending(i => i.Datacriacao));
+                        return Ok(usuario.Desejo.OrderByDescending(i => i.Datacricao));
                 }
-            } catch (Exception exc) {
+            }
+            catch (Exception exc)
+            {
                 return BadRequest(exc.Message);
             }
         }
 
         [HttpPost]
         [Route("cadastro")]
-        public IActionResult Cadastrar(Usuario usuario) {
-            try {
+        public IActionResult Cadastrar(UsuarioViewModel usuario) {
+            try
+            {
                 Repositorio.Cadastrar(usuario);
+
                 return Ok($"Usuario {usuario.Nome} cadastrado com sucesso!");
-            } catch (Exception exc) {
+            }
+            catch (Exception exc)
+            {
                 return BadRequest(exc.Message);
             }
         }
 
-
         [HttpPost]
         [Route("login")]
         public IActionResult Login(LoginViewModel user) {
-            try {
+            try
+            {
                 Usuario usuario = Repositorio.Login(user.Email, user.Senha);
 
                 var claims = new[] {
                     new Claim(JwtRegisteredClaimNames.Jti,usuario.Usuarioid.ToString()),
                     new Claim(JwtRegisteredClaimNames.Email,usuario.Email)
                 };
+
                 var chave = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("Autenticação-Wishlist"));
 
                 var credenciais = new SigningCredentials(chave, SecurityAlgorithms.HmacSha256);
 
-                var token = new JwtSecurityToken(
+                var token = new JwtSecurityToken
+                (
                     issuer: "Wishlist.WebApi",
                     audience: "Wishlist.WebApi",
                     claims: claims,
@@ -99,7 +111,8 @@ namespace Senai.WebApi.Wishlist.Controllers
                     Token = new JwtSecurityTokenHandler().WriteToken(token)
                 });
             }
-            catch (Exception exc) {
+            catch (Exception exc)
+            {
                 return BadRequest(exc.Message);
             }
         }

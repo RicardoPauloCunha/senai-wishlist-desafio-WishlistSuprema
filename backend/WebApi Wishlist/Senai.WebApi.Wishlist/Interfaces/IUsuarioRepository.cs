@@ -9,7 +9,8 @@ namespace Senai.WebApi.Wishlist.Interfaces {
         /// Cadastra um usuario no banco de dados
         /// </summary>
         /// <param name="usuario">Usuario a ser cadastrado</param>
-        void Cadastrar(Usuario usuario);
+        void Cadastrar(UsuarioViewModel usuario);
+
         /// <summary>
         /// Procura um usuario que tenha a combinação de email e senha inseridos
         /// </summary>
